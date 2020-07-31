@@ -1,0 +1,174 @@
+.header-btns:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+
+    transition: all 0.15s ease-in-out;
+}
+
+[data-tooltip-text]:hover {
+    position:relative;
+}
+
+[data-tooltip-text]:hover::after {
+    content:attr(data-tooltip-text);
+
+    position: absolute;
+    right:0;
+    bottom:-170%;
+    
+    background-color:rgba(0, 0, 0, 0.5);
+    color:#d0d0d0;
+    font-size:12px;
+
+    display:inline-block;
+    white-space:nowrap;;
+    line-height:2;
+    padding:0 8px;
+    z-index:1;
+}
+
+header .head-container {
+    height:56px;
+    padding-right:16px;
+    background-color:#fff;
+    
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+    align-items:center; 
+
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+}
+
+/* begin, mid, end 공통 */
+header .head-container-contents {
+    height:100%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:center;
+    align-items:center;
+}
+
+/* begin */
+header #begin {
+    width:210px;
+    flex-shrink:0;
+}
+
+header #begin #head-menu-toggle {
+    width:70px;
+    height:100%;
+    border:0;
+
+    font-size:19px;
+    color:#6f6f6f;
+    background-color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+header #begin #head-menu-toggle .fa-bars {
+    transform: scale(1.1, 0.9);
+}
+
+header #begin #head-main-logo {
+    width:140px;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+/* mid */
+header #mid {
+    width:640px;
+    margin:0 100px;
+    flex:0 1 auto;
+    display:flex;
+    justify-content:flex-end;
+}
+
+header #mid .head-search-form {
+    display:flex;
+    height:28px;
+    width:100%;
+    flex-flow:row nowrap;
+    justify-content:center;
+    align-items:center;
+    border:1px solid #cfcfcf;
+    border-radius:2px;
+}
+
+header #mid .head-search-form .search-box {
+    height:100%;
+    border:0;
+}
+
+header #mid .head-search-form .search-text {
+    width:calc(100% - 65px);
+    border-right:1px solid #cfcfcf;
+    font-size:16px;
+    padding:0 4px;
+    box-shadow: 0 0.5px 1px 1px #efefef inset;
+    border-radius:1px 0 0 1px;
+}
+
+header #mid .head-search-form .search-button {
+    width:65px;
+    border-left:1px solid #cfcfcf;
+    background-color:#f7f7f7;
+    color:#9f9f9f;
+    border-radius:0 1px 1px 0;
+}
+
+header #mid .head-search-form .search-button:hover {
+    background-color:#f0f0f0;
+    color:#3f3f3f;
+}
+
+header #mid #smallview-search-btn {
+    border:0;
+    background-color:rgba(0, 0, 0, 0);
+    font-size:18px;
+    color:#7f7f7f;
+    display:none;
+}
+
+
+/* end */
+header #end {
+    width:200px;
+    flex-shrink:0;
+    display:flex;
+    justify-content:space-around;
+    font-size:18px;
+    color:#6f6f6f;
+}
+
+header #end #user-home-btn {
+    font-size:25px;
+}
+
+header #hidden-back-btn {
+    width:70px;
+    height:100%;
+    border:0;
+
+    font-size:19px;
+    color:#6f6f6f;
+    background-color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+

@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/* CSS Reset */
+html, body, div, p, span, strong, b, em, iframe,
+pre, h1, h2, h3, h4, h5, h6, img, dl, dt, dd, fieldset,
+form, legend, label, table, caption, thead, tbody, tfoot,
+tr, th, td, ul, ol, li, a, input, select, textarea {
+    margin:0;
+    padding:0;
+    border:0 none;
+}
+
+body {
+    font-family:'나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
+}
+
+ul, ol, li {list-style: none;}
+em, address {font-style: normal;}
+a {color: #000; text-decoration: none; line-height: 1;}
+
+
+input::placeholder { 
+    color: #999; 
+}
+
+.btn-hover:hover {
+    cursor:pointer;
+}
