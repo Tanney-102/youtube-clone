@@ -1,8 +1,68 @@
+window.onload = function() {
+    var xhr = new XMLHttpRequest();
 
-
-
-// functions
-function getContents() {
-    const contentsList = [];
-    // const listJSON = JSON.parse(
+    xhr.onreadystatechange = function() { 
+    if (xhr.readyState === 4) { 
+        if (xhr.status === 200) {  
+            const videoData = JSON.parse(this.responseText);
+            renderVideo(videoData);
+        } else {
+         console.error('404');
+        }
+    }
+    };
+    // xhr.open('GET', 'http://127.0.0.1:1337/home');
+    xhr.open('GET', '../local-server/data/video-data.json');
+    xhr.send(null);
 }
+
+function renderVideo(data) {
+    const categoryList = ['1', '2'];
+    const mainArea = document.getElementsByTagName('main')[0];
+
+    categoryList.forEach( (categ, idx) => {
+        const profile = '<i class="fas fa-user-circle"></i>' // 추후 로직추가
+        
+        console.log(categ);
+        console.log(typeof(categ));
+        console.log(data);
+        console.log(data[categ]);
+
+        data[categ].forEach( v_info => {
+            mainArea.innerHTML += `
+            <section id="categ-${categ}">
+            <h2 class="category-name">${categ}</h2>
+            <ul class="video-list">
+                <li class="video-container">
+                    <a href="./watch?video_id=${v_info["video_id"]}">
+                        <img class="video-contents" src="${v_info["thumbnail"]}">
+                        <div class="video-info">
+                            <div class="vinfo-user-icon">${profile}</div>
+                            <div class="vinfo-text">
+                                <div class="vinfo-title">${v_info["title"]}</div>
+                                <div class="vinfo-username">${v_info["author"]}</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            `;
+        });
+
+        if(idx != categoryList.length - 1) {
+            mainArea.innerHTML += '<hr class="hr-line">'
+        }
+    });
+}
+
+// {
+//     "title" : "세상 모든 근의 공식",
+//     "video_id":"202007v123",
+//     "author" : "오태은",
+//     "video" : "123/123.mp4",
+//     "thumbnail" : "123/thumbnail_123.png",
+//     "text" : "근의 공식에 대한 설명입니다.",
+//     "likes" : 4,
+//     "created" : "2020-07-02-17:04:52",
+//     "category" : "1"
+// }

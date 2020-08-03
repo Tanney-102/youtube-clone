@@ -1,0 +1,11 @@
+{
+    "title" : "세상 모든 근의 공식",
+    "video_id":"202007v123",
+    "author" : "오태은",
+    "video" : "./local-server/data/contents/123/123.mp4",
+    "thumbnail" : "./local-server/data/contents/123/thumbnail_123.png",
+    "text" : "근의 공식에 대한 설명입니다.",
+    "likes" : 4,
+    "created" : "2020-07-02-17:04:52",
+    "category" : "1"
+}
