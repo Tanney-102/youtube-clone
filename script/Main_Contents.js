@@ -34,7 +34,7 @@ function renderVideo(data) {
             <h2 class="category-name">${categ}</h2>
             <ul class="video-list">
                 <li class="video-container">
-                    <a href="./watch.index?video_id=${v_info["video_id"]}">
+                    <a href="./watch.html?video_id=${v_info["video_id"]}">
                         <img class="video-contents" src="${v_info["thumbnail"]}">
                         <div class="video-info">
                             <div class="vinfo-user-icon">${profile}</div>
