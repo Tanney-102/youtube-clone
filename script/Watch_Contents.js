@@ -6,6 +6,7 @@ xhr.onreadystatechange = function() {
         if(this.status == 200) {
             const videoData = JSON.parse(this.responseText);
             renderVideoArea(videoData);
+            setVideoWidth();
         } else {
             console.error('404');
         }
@@ -18,8 +19,6 @@ xhr.onreadystatechange = function() {
 xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
 // xhr.open('GET', 'localhost:1337/watch?video_id=' + query_video_id);
 xhr.send();
-
-setVideoWidth();
 
 // functions
 //
