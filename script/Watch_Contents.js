@@ -20,6 +20,10 @@ xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
 // xhr.open('GET', 'localhost:1337/watch?video_id=' + query_video_id);
 xhr.send();
 
+window.onresize = function() {
+    setVideoWidth();
+}
+
 // functions
 //
 function renderVideoArea(data) {

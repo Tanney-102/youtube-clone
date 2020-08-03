@@ -22,5 +22,5 @@ main #video-area {
 
 main #other-videos {
     width:430px;
-    /* border:1px solid black; */
+    border:1px solid black;
 }
