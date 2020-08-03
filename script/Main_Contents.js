@@ -5,7 +5,7 @@ window.onload = function() {
     if (xhr.readyState === 4) { 
         if (xhr.status === 200) {  
             const videoData = JSON.parse(this.responseText);
-            renderVideo(videoData);
+            renderContents(videoData);
         } else {
          console.error('404');
         }
@@ -16,7 +16,7 @@ window.onload = function() {
     xhr.send(null);
 }
 
-function renderVideo(data) {
+function renderContents(data) {
     const categoryList = ['1', '2'];
     const mainArea = document.getElementsByTagName('main')[0];
 
@@ -35,12 +35,12 @@ function renderVideo(data) {
             <ul class="video-list">
                 <li class="video-container">
                     <a href="./watch?video_id=${v_info["video_id"]}">
-                        <img class="video-contents" src="${v_info["thumbnail"]}">
-                        <div class="video-info">
-                            <div class="vinfo-user-icon">${profile}</div>
-                            <div class="vinfo-text">
-                                <div class="vinfo-title">${v_info["title"]}</div>
-                                <div class="vinfo-username">${v_info["author"]}</div>
+                        <img class="video-thumbnail" src="${v_info["thumbnail"]}">
+                        <div class="ideo-info">
+                            <div class="info-user-icon">${profile}</div>
+                            <div class="info-text">
+                                <div class="info-title">${v_info["title"]}</div>
+                                <div class="info-username">${v_info["author"]}</div>
                             </div>
                         </div>
                     </a>

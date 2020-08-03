@@ -64,16 +64,16 @@ main .video-list .video-container {
     width:23%;
 }
 
-main .video-list .video-contents {
+main .video-list .video-thumbnail {
     width:100%;
 }
 
-main .video-list .video-info {
+main .video-list .content-info {
     display:flex;
     margin-top:5%;
 }
 
-main .video-list .vinfo-user-icon {
+main .video-list .info-user-icon {
     width:18%;
     font-size:30px;
     color:#afafaf;
@@ -81,12 +81,12 @@ main .video-list .vinfo-user-icon {
     display:flex;
 }
 
-main .video-list .vinfo-title {
+main .video-list .info-title {
     margin-bottom:8px;
     font-size:14px;
 }
 
-main .video-list .vinfo-username {
+main .video-list .info-username {
     font-size:12px;
     color:#777;
 }
