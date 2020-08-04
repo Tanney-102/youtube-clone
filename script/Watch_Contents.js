@@ -40,7 +40,7 @@ function renderVideoArea(data) {
     const videoArea = document.querySelector('#video-area');
     const userProfile = '<i class="fas fa-user-circle"></i>' // 추후 수정
     const created = data["created"].split('/')[0].split('-');
-    let createdDate;
+    let createdDate = '';
 
     created.forEach( v => {
         createdDate += v + '. ';
