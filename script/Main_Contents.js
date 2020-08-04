@@ -28,8 +28,10 @@ function renderContents(data) {
                 <h2 class="category-name">${categ}</h2>
                 <ul class="video-list">
             `;
+        
+        for(let i=0; i<data[categ].length; i++) {
+            const v_info = data[categ][i];
 
-        data[categ].forEach( v_info => {
             mainArea.innerHTML += `
                 <li class="video-container">
                     <a href="./watch?video_id=${v_info["video_id"]}">
@@ -44,7 +46,7 @@ function renderContents(data) {
                     </a>
                 </li>
             `;
-        });
+        }
 
         mainArea.innerHTML += `</ul></section>`
 

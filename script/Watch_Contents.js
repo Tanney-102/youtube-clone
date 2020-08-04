@@ -3,9 +3,9 @@ window.addEventListener('resize', function() {
 });
 
 // 임시 코드
-setVideoWidth();
+// setVideoWidth();
 
-// getMainVideo();
+getMainVideo();
 
 
 //
