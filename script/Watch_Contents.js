@@ -1,36 +1,41 @@
-const query_video_id = document.URL.split('=')[1];
-const xhr = new XMLHttpRequest();
-
-console.log(query_video_id);
-
-xhr.onreadystatechange = function() {
-    if(this.readyState == 4) {
-        if(this.status == 200) {
-            const videoData = JSON.parse(this.responseText);
-            renderVideoArea(videoData);
-            setVideoWidth();
-        } else {
-            console.error('404');
-        }
-
-    }
-}
-
-// exec
-//
-xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
-// xhr.open('GET', 'localhost:1337/watch?video_id=' + query_video_id);
-xhr.send();
-
-// 임시 코드
-// setVideoWidth();
-
 window.addEventListener('resize', function() {
     setVideoWidth();
 });
 
+// 임시 코드
+setVideoWidth();
+
+// getMainVideo();
+
+
+//
 // functions
 //
+function getMainVideo() {
+    const query_video_id = document.URL.split('=')[1];
+    const xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4) {
+            if(this.status == 200) {
+                const videoData = JSON.parse(this.responseText);
+                const title = document.getElementsByTagName('title')[0];
+
+                title.innerHTML = videoData['title'];
+                renderVideoArea(videoData);
+                setVideoWidth();
+            } else {
+                console.error('404');
+            }
+    
+        }
+    }
+
+    xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
+    // xhr.open('GET', 'localhost:1337/watch?video_id=' + query_video_id);
+    xhr.send();
+}
+
 function renderVideoArea(data) {
     const videoArea = document.querySelector('#video-area');
 

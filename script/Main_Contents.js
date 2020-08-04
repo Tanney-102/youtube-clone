@@ -23,16 +23,14 @@ function renderContents(data) {
     categoryList.forEach( (categ, idx) => {
         const profile = '<i class="fas fa-user-circle"></i>' // 추후 로직추가
         
-        console.log(categ);
-        console.log(typeof(categ));
-        console.log(data);
-        console.log(data[categ]);
+        mainArea.innerHTML += `
+            <section id="categ-${categ}">
+                <h2 class="category-name">${categ}</h2>
+                <ul class="video-list">
+            `;
 
         data[categ].forEach( v_info => {
             mainArea.innerHTML += `
-            <section id="categ-${categ}">
-            <h2 class="category-name">${categ}</h2>
-            <ul class="video-list">
                 <li class="video-container">
                     <a href="./watch?video_id=${v_info["video_id"]}">
                         <img class="video-thumbnail" src="${v_info["thumbnail"]}">
@@ -45,9 +43,10 @@ function renderContents(data) {
                         </div>
                     </a>
                 </li>
-            </ul>
             `;
         });
+
+        mainArea.innerHTML += `</ul></section>`
 
         if(idx != categoryList.length - 1) {
             mainArea.innerHTML += '<hr class="hr-line">'
