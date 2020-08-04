@@ -29,24 +29,26 @@ function renderContents(data) {
                 <ul class="video-list">
             `;
         
-        for(let i=0; i<data[categ].length; i++) {
-            const v_info = data[categ][i];
+        (function() {
+            for(let i=0; i<data[categ].length; i++) {
+                const v_info = data[categ][i];
 
-            mainArea.innerHTML += `
-                <li class="video-container">
-                    <a href="./watch?video_id=${v_info["video_id"]}">
-                        <img class="video-thumbnail" src="${v_info["thumbnail"]}">
-                        <div class="ideo-info">
-                            <div class="info-user-icon">${profile}</div>
-                            <div class="info-text">
-                                <div class="info-title">${v_info["title"]}</div>
-                                <div class="info-author">${v_info["author"]}</div>
+                mainArea.innerHTML += `
+                    <li class="video-container">
+                        <a href="./watch?video_id=${v_info["video_id"]}">
+                            <img class="video-thumbnail" src="${v_info["thumbnail"]}">
+                            <div class="ideo-info">
+                                <div class="info-user-icon">${profile}</div>
+                                <div class="info-text">
+                                    <div class="info-title">${v_info["title"]}</div>
+                                    <div class="info-author">${v_info["author"]}</div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-            `;
-        }
+                        </a>
+                    </li>
+                `;
+            }
+        })();
 
         mainArea.innerHTML += `</ul></section>`
 
