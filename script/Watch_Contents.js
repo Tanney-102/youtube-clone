@@ -44,6 +44,8 @@ function renderVideoArea(data) {
         </video>
     </div>
     `;
+
+    setVideoWidth();
 }
 
 function setVideoWidth() {
