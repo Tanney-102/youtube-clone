@@ -30,9 +30,9 @@ function renderContents(data) {
             `;
         
         data[categ].forEach( v_info => {
-            const section = document.getElementById('categ-' + categ);
+            const ul = document.querySelector('#categ-'+categ+' ul');
 
-            section.innerHTML += `
+            ul.innerHTML += `
                 <li class="video-container">
                     <a href="./watch?video_id=${v_info["video_id"]}">
                         <img class="video-thumbnail" src="${v_info["thumbnail"]}">
