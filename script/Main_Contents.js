@@ -36,7 +36,7 @@ function renderContents(data) {
                 <li class="video-container">
                     <a href="./watch?video_id=${v_info["video_id"]}">
                         <img class="video-thumbnail" src="${v_info["thumbnail"]}">
-                        <div class="video-info">
+                        <div class="content-info">
                             <div class="info-user-icon">${profile}</div>
                             <div class="info-text">
                                 <div class="info-title">${v_info["title"]}</div>
