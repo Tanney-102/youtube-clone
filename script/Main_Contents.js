@@ -29,10 +29,10 @@ function renderContents(data) {
                 <ul class="video-list">
             `;
         
-        for(let i=0; i<data[categ].length; i++) {
-            const v_info = data[categ][i];
+        data[categ].forEach( v_info => {
+            const section = document.getElementById('categ-' + categ);
 
-            mainArea.innerHTML += `
+            section.innerHTML += `
                 <li class="video-container">
                     <a href="./watch?video_id=${v_info["video_id"]}">
                         <img class="video-thumbnail" src="${v_info["thumbnail"]}">
@@ -46,7 +46,7 @@ function renderContents(data) {
                     </a>
                 </li>
             `;
-        }
+        });
 
         mainArea.innerHTML += `</ul></section>`
 
