@@ -23,7 +23,7 @@ xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
 xhr.send();
 
 // 임시 코드
-setVideoWidth();
+// setVideoWidth();
 
 window.addEventListener('resize', function() {
     setVideoWidth();
