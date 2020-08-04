@@ -1,6 +1,8 @@
 const query_video_id = document.URL.split('=')[1];
 const xhr = new XMLHttpRequest();
 
+console.log(query_video_id);
+
 xhr.onreadystatechange = function() {
     if(this.readyState == 4) {
         if(this.status == 200) {
@@ -16,9 +18,9 @@ xhr.onreadystatechange = function() {
 
 // exec
 //
-// xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
+xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
 // xhr.open('GET', 'localhost:1337/watch?video_id=' + query_video_id);
-// xhr.send();
+xhr.send();
 
 // 임시 코드
 setVideoWidth();
@@ -31,6 +33,8 @@ window.addEventListener('resize', function() {
 //
 function renderVideoArea(data) {
     const videoArea = document.querySelector('#video-area');
+
+    console.log(data);
 
     videoArea.innerHTML = `
     <div id="video-player">
