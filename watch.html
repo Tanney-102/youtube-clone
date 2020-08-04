@@ -44,19 +44,65 @@
     <main>
         <div id="main-container">
             <div id="video-area">
-                <!-- <div id="video-player">
+                <div id="video-player">
                     <video id="video" src="./local-server/data/contents/123/123.mp4" controls autoplay>video 미지원 브라우저입니다.</video>
-                </div> -->
+                </div>
     
             </div>
-            <div id="other-videos">
-                Other Vidoes
+            <div id="other-video-container">
+                <h3 class="other-video-head">다음 동영상</h3>
+                <div id="next-video" class="other-videos-list">
+                    <a href="#">
+                        <img class="thumbnail" src="./image/dummy-300x150.png">
+                        <div class="other-video-info">
+                            <div class="other-v-title">영상제목</div> 
+                            <div class="other-v-subinfo">
+                                <div class="other-v-author">채널명</div>
+                                <span class="other-v-views">조회수</span>
+                                <span>&middot;</span>
+                                <span class="other-v-created">생성일</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <hr class="hr-line">
+                <h3 class="other-video-head">같은 카테고리</h3>
+                <ul>
+                    <li class="other-videos-list">
+                        <a href="#">
+                            <img class="thumbnail" src="./image/dummy-300x150.png">
+                            <div class="other-video-info">
+                                <div class="other-v-title">영상제목</div> 
+                                <div class="other-v-subinfo">
+                                    <div class="other-v-author">채널명</div>
+                                    <span class="other-v-views">조회수</span>
+                                    <span>&middot;</span>
+                                    <span class="other-v-created">생성일</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="other-videos-list">
+                        <a href="#">
+                            <img class="thumbnail" src="./image/dummy-300x150.png">
+                            <div class="other-video-info">
+                                <div class="other-v-title">영상제목</div> 
+                                <div class="other-v-subinfo">
+                                    <div class="other-v-author">채널명</div>
+                                    <span class="other-v-views">조회수</span>
+                                    <span>&middot;</span>
+                                    <span class="other-v-created">생성일</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>
 
     <!-- script -->
     <script src="./script/Header_UI.js"></script>
-    <script src="./script/Watch_contents.js"></script>
+    <script src="./script/Watch_Contents.js"></script>
 </body>
 </html>

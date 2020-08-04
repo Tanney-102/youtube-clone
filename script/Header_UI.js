@@ -1,12 +1,12 @@
     const sviewSearchBtn = document.getElementById('smallview-search-btn');
-    let viewWidth_flag = 1; // viewport의 변화를 감지. 기존 width가 768미만이었으면 0, 반대경우 1
+    let viewWidth_flag; // viewport의 변화를 감지. 기존 width가 768미만이었으면 0, 반대경우 1
     let sviewSearchBtnActive = 0; // smallview-search-btn이 눌렀는지 감지. 눌렸으면 1, 안눌렸거나 뒤로가기를 했을경우 0
     
-    setMainHeight();
-
     sviewSearchBtn.addEventListener('click', openSearchArea);
+    setMainHeight();
+    initHeader();
     
-    window.onresize = function() {
+    window.addEventListener('resize', function() {
         const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
         if(viewportWidth >= 768 && viewWidth_flag == 0) {
@@ -32,7 +32,7 @@
                 openSearchArea();
             }
         }
-    }
+    });
 
 
 
@@ -41,6 +41,18 @@ function setMainHeight() {
     const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     
     document.getElementsByTagName('main')[0].style.minHeight = viewportHeight + 'px'
+}
+
+function initHeader() {
+    const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+    if(viewportWidth >= 768) {
+        viewWidth_flag = 1;
+        getLargeHeader();
+    } else {
+        viewWidth_flag = 0;
+        getSmallHeader();
+    }
 }
 
 function openSearchArea() {
@@ -106,6 +118,8 @@ function getLargeHeader() {
 }
 
 function getSmallHeader() {
+    console.log('getSmallHeader');
+
     const mid = document.getElementById('mid');
     const searchForm = document.getElementById('head-search-form');
     const sviewSearchBtn = document.getElementById('smallview-search-btn');

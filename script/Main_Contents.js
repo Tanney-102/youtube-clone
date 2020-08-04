@@ -40,7 +40,7 @@ function renderContents(data) {
                             <div class="info-user-icon">${profile}</div>
                             <div class="info-text">
                                 <div class="info-title">${v_info["title"]}</div>
-                                <div class="info-username">${v_info["author"]}</div>
+                                <div class="info-author">${v_info["author"]}</div>
                             </div>
                         </div>
                     </a>
