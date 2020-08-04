@@ -57,7 +57,7 @@ function renderVideoArea(data) {
         <div class="video-info">
             <div class="video-info-head">
                 <div class="view-n-created">
-                    <span class="video-views">조회수 ${views}회</span>
+                    <span class="video-views">조회수 ${data["views"]}회</span>
                     <span>&middot;</span>
                     <span class="video-created">${createdDate}</span>
                 </div>
