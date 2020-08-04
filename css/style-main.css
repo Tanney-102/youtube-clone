@@ -74,11 +74,15 @@ main .video-list .content-info {
 }
 
 main .video-list .info-user-icon {
-    width:18%;
+    width:40px;
     font-size:30px;
     color:#afafaf;
 
     display:flex;
+}
+
+main .video-list .info-text {
+    width:calc(100% - 40px);
 }
 
 main .video-list .info-title {
