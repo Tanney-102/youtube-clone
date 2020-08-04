@@ -19,6 +19,104 @@ main #video-area {
     width:calc(100% - 400px);
 }
 
+main #video-area .video-title {
+    width:100%;
+    margin:30px 0 15px 0;
+    font-size:19px;
+}
+
+main #video-area .video-info .video-info-head {
+    display:flex;
+    justify-content:space-between;
+}
+
+main #video-area .view-n-created {
+    font-size: 14px;
+    width:200px;
+}
+
+main #video-area .v-btns-container {
+    width:250px;
+    color:#909090;
+
+    display:flex;
+    justify-content:space-between
+}
+
+main #video-area .v-btn {
+    width:25%;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+main #video-area .btn-text {
+    display:flex;
+    align-items:center;
+    font-size:14px;
+}
+
+main #video-area .v-btns-container .v-icon {
+    margin-right:10px;
+    font-size:23px;
+}
+
+main #video-area .video-desc {
+    margin:20px 0;
+    padding:20px 0;
+    border-top:1px solid #e0e0e0;
+    border-bottom:1px solid #e0e0e0;
+
+    display:flex;
+}
+
+main #video-area .video-desc .author-profile {
+    font-size:45px;
+    color:#b0b0b0;
+    width:58px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding-top:10px;
+}
+
+main #video-area .video-desc .desc-container {
+    width:calc(100% - 58px);
+}
+
+main #video-area .video-desc .author-info {
+    height:56px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+main #video-area .video-desc .author-name {
+    font-size:14px;
+    margin-bottom:3px;
+}
+
+main #video-area .video-desc .author-subs {
+    font-size:11px;
+    color:#555
+}
+
+main #video-area .subs-btn {
+    width:75px;
+    height:35px;
+    background-color:rgb(214, 37, 37);
+    border:0;
+    border-radius:2px;
+    color:#fff;
+}
+
+main #video-area .desc-content {
+    font-size:13px;
+    padding:10px 0;
+}
+
 main #other-video-container {
     width:400px;
     padding:0 30px;
