@@ -2,10 +2,8 @@ window.addEventListener('resize', function() {
     setVideoWidth();
 });
 
-// 임시 코드
-// setVideoWidth();
-
-getMainVideo();
+// 0: 레이아웃 모드 , 1: 서버모드
+pickMode(0);
 
 
 //
@@ -23,7 +21,6 @@ function getMainVideo() {
 
                 title.innerHTML = videoData['title'];
                 renderVideoArea(videoData);
-                setVideoWidth();
             } else {
                 console.error('404');
             }
@@ -105,4 +102,64 @@ function setVideoWidth() {
     const video = document.querySelector('#video');
 
     video.setAttribute('width', v_width);
+}
+
+// 0: 레이아웃 모드 , 1: 서버모드
+function pickMode(mode) {
+    if(mode==1) {
+        getMainVideo();
+    } else {
+        loadLayoutMode();
+    }
+}
+
+function loadLayoutMode() {
+    document.getElementById('video-area').innerHTML = `
+    <div id="video-player">
+        <video id="video" src="./local-server/data/contents/123/123.mp4" controls autoplay>video 미지원 브라우저입니다.</video>
+    </div>
+    <div class="video-title">세상 모든 근의 공식</div>
+    <div class="video-info">
+        <div class="video-info-head">
+            <div class="view-n-created">
+                <span class="video-views">조회수</span>
+                <span>&middot;</span>
+                <span class="video-created">생성일</span>
+            </div>
+            <div class="v-btns-container">
+                <div id="likes-btn" class="btn-hover v-btn">
+                    <i class="fas fa-thumbs-up v-icon"></i>
+                    <div class="btn-text">5</div>
+                </div>
+                <div id="share-btn" class="btn-hover v-btn">
+                    <i class="fas fa-share v-icon"></i>
+                    <div class="btn-text">공유</div>
+                </div>
+                <div id="save-btn" class="btn-hover v-btn">
+                    <i class="fas fa-plus-square v-icon"></i>
+                    <div class="btn-text">저장</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-desc">
+            <div class="author-profile">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="desc-container">
+                <div class="author-info">
+                    <div>
+                        <div class="author-name">오태은</div>
+                        <div class="author-subs">구독자 100만명</div>
+                    </div>
+                    <button id="subs-btn" class="subs-btn btn-hover">구독</button>
+                </div>
+                <div class="desc-content">
+                    근의 공식에 대한 설명입니다.
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+
+    setVideoWidth();
 }

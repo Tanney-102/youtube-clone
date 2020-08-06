@@ -134,6 +134,7 @@ main #other-video-container .other-video-head {
 
 main #other-video-container .other-videos-list {
     width:100%;
+
     display:flex;
     margin:10px 0;
 }
@@ -143,7 +144,8 @@ main #other-video-container a {
 }
 
 main #other-video-container .thumbnail {
-    width:180px
+    width:180px;
+    height:90px;
 }
 
 main #other-video-container .other-video-info {
@@ -154,6 +156,14 @@ main #other-video-container .other-video-info {
 main #other-video-container .other-v-title {
     font-size:14px;
     font-weight:600;
+    line-height:16px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
     margin-bottom:8px;
 }
 
