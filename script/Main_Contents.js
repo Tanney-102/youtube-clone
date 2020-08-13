@@ -1,69 +1,62 @@
-window.onload = function() {
-    var xhr = new XMLHttpRequest();
+getVideos();
 
-    xhr.onreadystatechange = function() { 
-    if (xhr.readyState === 4) { 
-        if (xhr.status === 200) {  
-            const videoData = JSON.parse(this.responseText);
-            renderContents(videoData);
-        } else {
-         console.error('404');
-        }
-    }
+
+//
+// functions
+//
+function getVideos() {
+    // const url = origin_server + 'home/';
+    const url = '../local-server/data/video-data.json';
+    const config = {
+        method: 'get',
     };
-    // xhr.open('GET', 'http://127.0.0.1:1337/home');
-    xhr.open('GET', '../local-server/data/video-data.json');
-    xhr.send(null);
+
+    fetch(url, config)
+    .then( res => { return res.json(); } )
+    .then( data => renderContents(data) )
+    .catch( err => console.error(err) );
 }
 
 function renderContents(data) {
-    const categoryList = ['1', '2'];
-    const mainArea = document.getElementsByTagName('main')[0];
+    const mainArea = document.querySelector('main');
 
-    categoryList.forEach( (categ, idx) => {
-        const profile = '<i class="fas fa-user-circle"></i>' // 추후 로직추가
-        
+    data.forEach( (categ, idx) => {
         mainArea.innerHTML += `
-            <section id="categ-${categ}">
-                <h2 class="category-name">${categ}</h2>
-                <ul class="video-list">
+            <section id="categ-${categ["category_name"]}">
+                <h2 class="category-name">${categ["category_name"]}</h2>
+            </section>
             `;
-        
-        data[categ].forEach( v_info => {
-            const ul = document.querySelector('#categ-'+categ+' ul');
 
-            ul.innerHTML += `
-                <li class="video-container">
-                    <a href="./watch?video_id=${v_info["video_id"]}">
-                        <img class="video-thumbnail" src="${v_info["thumbnail"]}">
-                        <div class="content-info">
-                            <div class="info-user-icon">${profile}</div>
-                            <div class="info-text">
-                                <div class="info-title">${v_info["title"]}</div>
-                                <div class="info-author">${v_info["author"]}</div>
+        const categContainer = document.querySelector('#categ-'+categ["category_name"]);
+
+        if(categ["videos"].length === 0) {
+            categContainer.innerHTML += '<div class="empty-box">해당 카테고리에 영상이 존재하지 않습니다.</div>'
+        } else {
+            categContainer.innerHTML += '<ul class="video-list"><ul>'
+
+            categ["videos"].forEach( v_info => {
+                const ul = document.querySelector('#categ-'+categ["category_name"]+' ul');
+                const profile = '<i class="fas fa-user-circle"></i>' // 추후 로직추가
+    
+                ul.innerHTML += `
+                    <li class="video-container">
+                        <a href="./watch?video_id=${v_info["id"]}">
+                            <img class="video-thumbnail" src="${v_info["thumbnail"]}">
+                            <div class="content-info">
+                                <div class="info-user-icon">${profile}</div>
+                                <div class="info-text">
+                                    <div class="info-title">${v_info["title"]}</div>
+                                    <div class="info-author">${v_info["author"]}</div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-            `;
-        });
-
-        mainArea.innerHTML += `</ul></section>`
-
-        if(idx != categoryList.length - 1) {
+                        </a>
+                    </li>
+                `;
+            });
+    
+        }
+        if(idx < 2) {
             mainArea.innerHTML += '<hr class="hr-line">'
         }
-    });
+    }); 
 }
-
-// {
-//     "title" : "세상 모든 근의 공식",
-//     "video_id":"202007v123",
-//     "author" : "오태은",
-//     "video" : "123/123.mp4",
-//     "thumbnail" : "123/thumbnail_123.png",
-//     "text" : "근의 공식에 대한 설명입니다.",
-//     "likes" : 4,
-//     "created" : "2020-07-02-17:04:52",
-//     "category" : "1"
-// }

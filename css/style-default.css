@@ -18,6 +18,13 @@ ul, ol, li {list-style: none;}
 em, address {font-style: normal;}
 a {color: #000; text-decoration: none; line-height: 1;}
 
+button {
+    color:inherit;
+    background-color:rgba(0,0,0,0);
+    border:0;
+}
+
+button, input:focus { outline:none; }
 
 input::placeholder { 
     color: #999; 

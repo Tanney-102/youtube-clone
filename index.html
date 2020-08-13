@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style-header.css">
     <link rel="stylesheet" href="./css/style-main.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="./script/origin.js"></script>
 </head>
 <body>
     <header>
@@ -18,14 +19,14 @@
                 </div>
                 <div id="head-main-logo">
                     <h1>
-                        <a href="./index.html"><img src="./image/yt-main-logo.png" alt="유튜브" width="120px" class="btn-hover"></a>
+                        <a href="/"><img src="./image/yt-main-logo.png" alt="유튜브" width="120px" class="btn-hover"></a>                        
                     </h1>
                 </div>
             </div>
             <div id="mid" class="head-container-contents">
                 <form id="head-search-form" class="head-search-form" action="#">
                     <input class="search-box search-text" type="text" placeholder="검색">
-                    <button data-tooltip-text="검색" class="search-box search-button btn-hover">
+                    <button type="submit" data-tooltip-text="검색" class="search-box search-button btn-hover">
                         <i class="fas fa-search head-search-icon"></i>
                     </button>
                 </form>
@@ -34,10 +35,16 @@
                 </button>
             </div>
             <div id="end" class="head-container-contents">
-                <span data-tooltip-text="만들기"><i id="new-video-btn" class="fas fa-video btn-hover header-btns"></i></span>
+                <!-- <span data-tooltip-text="만들기"><i id="new-video-btn" class="fas fa-video btn-hover header-btns"></i></span>
                 <span data-tooltip-text="YouTube 앱"><i id="apps-btn" class="fas fa-boxes btn-hover header-btns"></i></span>
                 <span data-tooltip-text="알림"><i id="notice-btn" class="fas fa-bell btn-hover header-btns"></i></span>
-                <span data-tooltip-text="내 계정"><i id="user-home-btn" class="fas fa-user-circle btn-hover header-btns"></i></span>
+                <span data-tooltip-text="내 계정"><i id="user-home-btn" class="fas fa-user-circle btn-hover header-btns"></i></span> -->
+                <!-- <div class="login-btn-container">
+                    <a href="./login.html" class="login-btn">
+                        <i class="fas fa-user-circle login-btn-icon"></i>
+                        로그인
+                    </a>
+                </div> -->
             </div>
         </div>
     </header>
@@ -98,6 +105,7 @@
 
     <!-- script -->
     <!-- UI Controller -->
+    <script src="./script/MainView.js"></script>
     <script src="./script/Header_UI.js"></script>
     <script src="./script/Main_Contents.js"></script>
 </body>

@@ -158,6 +158,29 @@ header #end #user-home-btn {
     font-size:25px;
 }
 
+header #end .login-btn-container {
+    width:100%;
+    height:38px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+header #end .login-btn {
+    width:90px;
+    height:100%;
+    font-size:14px;
+    color:#9f9f9f;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    border:1px solid #9f9f9f;
+}
+
+header #end .login-btn-icon {
+    font-size:23px;
+}
+
 header #hidden-back-btn {
     width:70px;
     height:100%;

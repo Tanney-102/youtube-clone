@@ -1,11 +1,13 @@
     const sviewSearchBtn = document.getElementById('smallview-search-btn');
+    const searchInput = document.querySelector('#head-search-form input');
     let viewWidth_flag; // viewport의 변화를 감지. 기존 width가 768미만이었으면 0, 반대경우 1
     let sviewSearchBtnActive = 0; // smallview-search-btn이 눌렀는지 감지. 눌렸으면 1, 안눌렸거나 뒤로가기를 했을경우 0
     
-    sviewSearchBtn.addEventListener('click', openSearchArea);
-    setMainHeight();
     initHeader();
+    getHeaderEnd();
     
+    sviewSearchBtn.addEventListener('click', openSearchArea);
+    searchInput.onfocus = () => { searchInput.style.outline = 'none'; }
     window.addEventListener('resize', function() {
         const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
@@ -37,12 +39,6 @@
 
 
 // functions
-function setMainHeight() {
-    const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    
-    document.getElementsByTagName('main')[0].style.minHeight = viewportHeight + 'px'
-}
-
 function initHeader() {
     const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
@@ -118,8 +114,6 @@ function getLargeHeader() {
 }
 
 function getSmallHeader() {
-    console.log('getSmallHeader');
-
     const mid = document.getElementById('mid');
     const searchForm = document.getElementById('head-search-form');
     const sviewSearchBtn = document.getElementById('smallview-search-btn');
@@ -132,4 +126,39 @@ function getSmallHeader() {
     searchForm.style.display = 'none';
 
     sviewSearchBtn.style.display = 'inline';
+}
+
+function getHeaderEnd() {
+    const indoor = `
+        <span data-tooltip-text="만들기"><i id="new-video-btn" class="fas fa-video btn-hover header-btns"></i></span>
+        <span data-tooltip-text="YouTube 앱"><i id="apps-btn" class="fas fa-boxes btn-hover header-btns"></i></span>
+        <span data-tooltip-text="알림"><i id="notice-btn" class="fas fa-bell btn-hover header-btns"></i></span>
+        <span data-tooltip-text="내 계정"><i id="user-home-btn" class="fas fa-user-circle btn-hover header-btns"></i></span>
+        `
+    const outdoor = `
+        <div class="login-btn-container">
+            <a href="./login" class="login-btn">
+                <i class="fas fa-user-circle login-btn-icon"></i>
+                로그인
+            </a>
+        </div>
+        `
+    
+    const headerEnd = document.querySelector('#end');
+    const url = origin_server;
+    const config = {
+        method : 'get',
+        headers : {
+            'Authorization' : localStorage.getItem('token'),
+        },
+    }
+
+    fetch(url, config)
+    .then( res => {
+        if(res == 200) {
+            headerEnd.innerHTML = indoor;
+        } else {
+            headerEnd.innerHTML = outdoor;
+        }
+    })
 }

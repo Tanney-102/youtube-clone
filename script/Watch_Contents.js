@@ -10,33 +10,38 @@ pickMode(0);
 // functions
 //
 function getMainVideo() {
-    const query_video_id = document.URL.split('=')[1];
-    const xhr = new XMLHttpRequest();
-    
-    xhr.onreadystatechange = function() {
-        if(this.readyState == 4) {
-            if(this.status == 200) {
-                const videoData = JSON.parse(this.responseText);
-                const title = document.getElementsByTagName('title')[0];
+    let query_video_id = document.URL.split('=')[1];
+    // const url = 'http://localhost:3000/home/' + query_video_id;
+    // const url = 'http://youtubeclone1535.herokuapp.com/home/' + query_video_id.substr(0,1);
+    const url = '../local-server/data/' + query_video_id + '.json';
+    const config = {
+        method:'get',
+        header: {
+            "Origin": "http://localhost:3000",
+            // "Access-Control-Allow-Origin": "*",
+        },
+    };
 
-                title.innerHTML = videoData['title'];
-                renderVideoArea(videoData);
-            } else {
-                console.error('404');
-            }
-    
+    fetch(url, config)
+    .then( res => {
+        if(res.status == 200) {
+            res.json().then( data => {
+                renderVideoArea(data);
+                renderCommentArea(data["comments"]);
+            });
+        } else {
+            console.error('error: ' + res.status);
         }
-    }
-
-    xhr.open('GET', '../local-server/data/' + query_video_id + '.json');
-    // xhr.open('GET', 'localhost:1337/watch?video_id=' + query_video_id);
-    xhr.send();
+    })
+    .catch( err => console.error(err) );
+    
+    
 }
 
 function renderVideoArea(data) {
     const videoArea = document.querySelector('#video-area');
     const userProfile = '<i class="fas fa-user-circle"></i>' // 추후 수정
-    const created = data["created"].split('/')[0].split('-');
+    const created = data["created"].substr(0, 10).split('-');
     let createdDate = '';
 
     created.forEach( v => {
@@ -46,7 +51,7 @@ function renderVideoArea(data) {
     videoArea.innerHTML = `
     <div id="video-player">
         <video id="video" controls autoplay>
-            <source src="${data["video"]}" type="video/mp4">
+            <source src="${data["video_file"]}" type="video/mp4">
             video 미지원 브라우저입니다.
         </video>
     </div>
@@ -96,6 +101,9 @@ function renderVideoArea(data) {
     setVideoWidth();
 }
 
+function renderCommentArea(comments) {
+}
+
 function setVideoWidth() {
     const videoArea = document.querySelector('#video-area');
     const v_width = window.getComputedStyle(videoArea).width;
@@ -127,16 +135,16 @@ function loadLayoutMode() {
                 <span class="video-created">생성일</span>
             </div>
             <div class="v-btns-container">
-                <div id="likes-btn" class="btn-hover v-btn">
-                    <i class="fas fa-thumbs-up v-icon"></i>
+                <div class="v-btn">
+                    <button id="likes-btn" class="btn-hover"><i class="fas fa-thumbs-up v-icon"></i></button>
                     <div class="btn-text">5</div>
                 </div>
-                <div id="share-btn" class="btn-hover v-btn">
-                    <i class="fas fa-share v-icon"></i>
+                <div class="v-btn">
+                    <button id="share-btn" class="btn-hover"><i class="fas fa-share v-icon"></i></button>
                     <div class="btn-text">공유</div>
                 </div>
-                <div id="save-btn" class="btn-hover v-btn">
-                    <i class="fas fa-plus-square v-icon"></i>
+                <div class="v-btn">
+                    <button id="save-btn" class="btn-hover"><i class="fas fa-plus-square v-icon"></i></button>
                     <div class="btn-text">저장</div>
                 </div>
             </div>

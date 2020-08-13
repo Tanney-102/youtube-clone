@@ -1,30 +1,76 @@
-{
-    "1" : [
-        {
-            "title" : "세상 모든 근의 공식",
-            "video_id":"202007v123",
-            "author" : "오태은",
-            "video" : "./local-server/data/contents/123/123.mp4",
-            "thumbnail" : "./local-server/data/contents/123/thumbnail_123.png",
-            "text" : "근의 공식에 대한 설명입니다.",
-            "views" : 5,
-            "likes" : 4,
-            "created" : "2020-07-02/17:04:52",
-            "category" : "1"
-        }
-    ],
-    "2" : [
-        {
-            "title" : "차량용 스마트폰 거치대 광고",
-            "video_id":"202007v124",
-            "author" : "오태은",
-            "video" : "./local-server/data/contents/124/124.mp4",
-            "thumbnail" : "./local-server/data/contents/124/thumbnail_124.png",
-            "text" : "실제 사용하고 했던 차량용 스마트폰 거치대에 대한 광고 영상입니다.",
-            "views" : 5,
-            "likes" : 2,
-            "created" : "2020-07-30/11:14:43",
-            "category" : "2"
-        }
-    ]
-}
+[
+    {
+        "id":1,
+        "videos": [],
+        "category_name":"sports"
+    },
+    {
+        "id":2,
+        "videos" : [],
+        "category_name": "entertainment"
+    },
+    {
+        "id":3,
+        "videos":[
+            {
+                "id":"202007v123",
+                "comments": [ 
+                    {
+                        "id": 1,
+                        "text": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+                        "likes": 3,
+                        "dislikes": 2,
+                        "ch_like": false,
+                        "created":"2020-08-07T09:42:36.337434Z",
+                        "video":"202007v123",
+                        "author":1
+                    },
+                    {
+                        "id": 2,
+                        "text": "좋은 영상이네요 ㅎㅎ",
+                        "likes": 12,
+                        "dislikes": 1,
+                        "ch_like": false,
+                        "created":"2020-08-07T09:42:36.337434Z",
+                        "video":"202007v123",
+                        "author":2
+                    }
+                ],
+                "title" : "세상 모든 근의 공식",
+                "author" : "오태은",
+                "video_file" : "./local-server/data/contents/123/123.mp4",
+                "thumbnail" : "./local-server/data/contents/123/thumbnail_123.png",
+                "text" : "근의 공식에 대한 설명입니다.",
+                "views" : 5,
+                "likes" : 4,
+                "created" : "2020-07-07T09:41:51.804384Z",
+                "category" : 3
+            },
+            {
+                "id":"202007v124",
+                "comments": [ 
+                    {
+                        "id": 3,
+                        "text": "재밌어요!",
+                        "likes": 3,
+                        "dislikes": 2,
+                        "ch_like": false,
+                        "created":"2020-08-07T09:42:36.337434Z",
+                        "video":"202007v123",
+                        "author":1
+                    }
+                ],
+                "title" : "차량용 스마트폰 거치대 광고",
+                "author" : "오태은",
+                "video_file" : "./local-server/data/contents/124/124.mp4",
+                "thumbnail" : "./local-server/data/contents/124/thumbnail_124.png",
+                "text" : "실제 사용하고 했던 차량용 스마트폰 거치대에 대한 광고 영상입니다.",
+                "views" : 5,
+                "likes" : 4,
+                "created" : "2020-07-17T09:41:51.804384Z",
+                "category" : 3
+            }
+        ],
+        "category_name": "etc"
+    }
+]
