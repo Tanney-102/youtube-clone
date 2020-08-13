@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/style-default.css">
+    <link rel="stylesheet" href="./css/style-header.css">
+    <link rel="stylesheet" href="./css/style-login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="./script/origin.js"></script>
+</head>
+<body>
+    <header>
+        <div id="head-container" class="head-container">
+            <div id="begin" class="head-container-contents">
+                <div id="head-main-logo">
+                    <h1>
+                        <a href="/"><img src="./image/yt-main-logo.png" alt="유튜브" width="120px" class="btn-hover"></a>
+                    </h1>
+                </div>
+            </div>
+            <div id="end" class="head-container-contents">
+                
+            </div>
+        </div>
+    </header>
+    <main>
+        <form method="POST" action="#">
+            <div class="login-field">
+                <div class="input-head">
+                    <i class="fab fa-youtube youtube-logo"></i>
+                    YouTube
+                </div>
+                <div class="input-container">
+                    <input type="text" id="userID" class="text-box" placeholder="이메일">
+                    <input type="password" id="userPW" class="text-box" placeholder="비밀번호">
+                </div>
+                <button id="login-btn" class="login-btn" disabled="disabled">로그인</button>
+            </div>
+        </form>
+        <div class="sign-up-btn-container">
+            <a href="./signup" id="sign-up">회원가입</a>
+        </div>
+    </main>
+
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="./script/MainView.js"></script>
+    <script src="./script/Login.js"></script>
+</body>
+</html>

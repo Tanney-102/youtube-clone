@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="./css/style-default.css">
+    <link rel="stylesheet" href="./css/style-header.css">
+    <link rel="stylesheet" href="./css/style-signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="./script/origin.js"></script>
+</head>
+<body>
+    <header>
+        <div id="head-container" class="head-container">
+            <div id="begin" class="head-container-contents">
+                <div id="head-main-logo">
+                    <h1>
+                        <a href="/"><img src="./image/yt-main-logo.png" alt="유튜브" width="120px" class="btn-hover"></a>
+                    </h1>
+                </div>
+            </div>
+            <div id="end" class="head-container-contents"></div>
+        </div>
+    </header>
+    <main>
+        <form method="POST" action="#">
+            <div class="signup-field">
+                <div class="input-head">
+                    <i class="fab fa-youtube youtube-logo"></i>
+                    YouTube
+                </div>
+                <div class="input-container">
+                    <div class="text-box id-name-box">
+                        <input type="text" id="username" class="id-input" placeholder="채널 이름">
+                        <button id="name-check-btn" class="btn-hover">중복검사</button>
+                    </div>
+                    <div class="text-box id-name-box">
+                        <input type="text" id="userID" class="id-input" placeholder="이메일">
+                        <button id="id-check-btn" class="btn-hover">인증</button>
+                    </div>
+                    <input type="password" id="userPW" class="text-box" placeholder="비밀번호">
+                    <input type="password" id="userPW-confirm" class="text-box" placeholder="비밀번호 확인">
+                </div>
+                <button id="signup-btn" class="signup-btn btn-hover">회원가입</button>
+            </div>
+        </form>
+    </main>
+    <script src="./script/MainView.js"></script>
+    <script src="./script/SignUp.js"></script>
+</body>
+</html>
