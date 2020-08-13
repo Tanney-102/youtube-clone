@@ -146,19 +146,20 @@ function getHeaderEnd() {
     
     const headerEnd = document.querySelector('#end');
     const url = origin_server;
-    const config = {
-        method : 'get',
-        headers : {
-            'Authorization' : localStorage.getItem('token'),
-        },
-    }
+    // const config = {
+    //     method : 'get',
+    //     headers : {
+    //         'Authorization' : localStorage.getItem('token'),
+    //     },
+    // }
 
-    fetch(url, config)
-    .then( res => {
-        if(res == 200) {
-            headerEnd.innerHTML = indoor;
-        } else {
-            headerEnd.innerHTML = outdoor;
-        }
-    })
+    // fetch(url, config)
+    // .then( res => {
+    //     if(res == 200) {
+    //         headerEnd.innerHTML = indoor;
+    //     } else {
+    //         headerEnd.innerHTML = outdoor;
+    //     }
+    // })
+    headerEnd.innerHTML = outdoor;
 }
