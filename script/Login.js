@@ -11,7 +11,8 @@ loginField.addEventListener('keyup', toggleLoginBtn);
 function submitLoginInfo() {
     const loginInfo = getLoginInfo();
     const url = origin_server + 'accounts/login/';
-    const url_home = './index.html';
+    const url_home = origin_net;
+    // const url_home = './index.html';
     const config = {
         method : 'post',
         headers : {
