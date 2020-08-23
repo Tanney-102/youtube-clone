@@ -5,15 +5,18 @@ getVideos();
 // functions
 //
 function getVideos() {
-    // const url = origin_server + 'home/';
-    const url = '../local-server/data/video-data.json';
+    const url = origin_server + 'videos/';
+    // const url = '../local-server/data/video-data.json';
     const config = {
         method: 'get',
     };
 
     fetch(url, config)
     .then( res => { return res.json(); } )
-    .then( data => renderContents(data) )
+    .then( data => { 
+        renderContents(data) 
+        console.log('fetched');
+    })
     .catch( err => console.error(err) );
 }
 

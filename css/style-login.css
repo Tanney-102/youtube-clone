@@ -39,7 +39,7 @@ main .login-field .input-head .youtube-logo{
 
 main .login-field .input-container {
     width:70%;
-    height:80px;
+    height:92px;
 
     display:flex;
     flex-direction:column;
@@ -52,7 +52,7 @@ main .login-field .text-box {
     border-radius:2px;
     background-color:#f8f8f8;
     width:100%;
-    height:46%;
+    height:43%;
     padding:0 7px;
     box-sizing:border-box
 }

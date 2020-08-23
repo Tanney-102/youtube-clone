@@ -1,41 +1,61 @@
+let query_video_id = document.URL.split('=')[1];
+// const url_getVideo = 'http://localhost:3000/home/' + query_video_id;
+// const url_getVideo = origin_server + query_video_id.substr(0,1);
+const url_getVideo = '../local-server/data/' + query_video_id + '.json';
+
+//
+// addEventListener
+//
 window.addEventListener('resize', function() {
     setVideoWidth();
 });
 
-// 0: 레이아웃 모드 , 1: 서버모드
-pickMode(0);
+
+//
+// exec Func
+//
+pickMode(0); // 0: 레이아웃 모드 , 1: 서버모드
 
 
 //
 // functions
 //
-function getMainVideo() {
-    let query_video_id = document.URL.split('=')[1];
-    // const url = 'http://localhost:3000/home/' + query_video_id;
-    // const url = 'http://youtubeclone1535.herokuapp.com/home/' + query_video_id.substr(0,1);
-    const url = '../local-server/data/' + query_video_id + '.json';
+// 0: 레이아웃 모드 , 1: 서버모드
+function pickMode(mode) {
+    if(mode==1) {
+        loadMainVideo();
+        loadCommentsByLikes();
+    } else {
+        loadLayoutMode();
+    }
+}
+
+function loadMainVideo() {
     const config = {
         method:'get',
-        header: {
-            "Origin": "http://localhost:3000",
-            // "Access-Control-Allow-Origin": "*",
-        },
     };
 
-    fetch(url, config)
+    fetch(url_getVideo, config)
     .then( res => {
-        if(res.status == 200) {
-            res.json().then( data => {
-                renderVideoArea(data);
-                renderCommentArea(data["comments"]);
-            });
-        } else {
-            console.error('error: ' + res.status);
-        }
+        res.json().then( data => {
+            renderVideoArea(data);
+        });
     })
     .catch( err => console.error(err) );
-    
-    
+}
+
+function loadCommentsByLikes(comments) {
+    const config = {
+        method:'get',
+    };
+
+    fetch(url_getVideo, config)
+    .then( res => { return res.json['comments'] } )
+    .then( data => render
+}
+
+function loadCommentsBydate(comments) {
+
 }
 
 function renderVideoArea(data) {
@@ -101,9 +121,6 @@ function renderVideoArea(data) {
     setVideoWidth();
 }
 
-function renderCommentArea(comments) {
-}
-
 function setVideoWidth() {
     const videoArea = document.querySelector('#video-area');
     const v_width = window.getComputedStyle(videoArea).width;
@@ -112,17 +129,16 @@ function setVideoWidth() {
     video.setAttribute('width', v_width);
 }
 
-// 0: 레이아웃 모드 , 1: 서버모드
-function pickMode(mode) {
-    if(mode==1) {
-        getMainVideo();
-    } else {
-        loadLayoutMode();
-    }
+function sortCommentsByLikes(com1, com2) {
+    return com2['likes'] - com1['likes'];
+}
+
+function sortCommentsByDate(com1, com2) {
+
 }
 
 function loadLayoutMode() {
-    document.getElementById('video-area').innerHTML = `
+    document.querySelector('#video-area').innerHTML = `
     <div id="video-player">
         <video id="video" src="./local-server/data/contents/123/123.mp4" controls autoplay>video 미지원 브라우저입니다.</video>
     </div>
@@ -167,7 +183,98 @@ function loadLayoutMode() {
             </div>
         </div>
     </div>
-    `
+    `;
 
+    document.querySelector('#comment-container').innerHTML = `
+        <div class="comment-head">
+            <div class="comment-num">댓글 12개</div>
+            <div id="sorting-rule">
+                <button id="sorting-opt-toggle-btn" class="btn-hover">
+                    <i class="fas fa-sort-amount-up"></i>
+                    정렬 기준
+                </button>
+                <ul class="sorting-opt">
+                    <li class="sorting-opt-list">
+                        <button id="likes-sort-btn" class="sorting-opt-btn">
+                            좋아요순
+                        </button>
+                    </li>
+                    <li class="sorting-opt-list">
+                        <button id="latest-sort-btn" class="sorting-opt-btn">
+                            최근 댓글순
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="post-comment-container">
+            <div class="comment-user-profile">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <form id="post-comment" action="#" method="POST">
+                <div id="comment-input-container">
+                    <input id="comment-input" type="text" placeholder="공개 댓글 추가...">
+                </div>
+                <div id="form-btn-container">
+                    <button id="comment-reset-btn" class="form-btn" type="reset">취소</button>
+                    <button id="comment-submit-btn" class="form-btn" type="submit">댓글</button>
+                </div>
+            </form>
+        </div>
+        <div class="get-comment-container">
+            <ul>
+                <li class="comment-list">
+                    <div class="comment-user-profile">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="comment-elm-container">
+                        <div class="comment-elm-head">
+                            <div class="comment-elm-username">오오오</div>
+                            <div class="comment-elm-date">2일전</div>
+                        </div>
+                        <div class="comment-elm-body">
+                            ㅋㅋㅋㅋㅋㅋㅋ 너무 재밌어요 ㅎㅎ
+                        </div>
+                        <div class="comment-elm-foot">
+                            <i data-tooltip-text="좋아요" class="fas fa-thumbs-up comment-thumbs-btn btn-hover"></i>
+                            <div class="likes-num thumbs-num">34</div>
+                            <span data-tooltip-text="싫어요"><i class="fas fa-thumbs-down comment-thumbs-btn btn-hover"></i></span>
+                            <div class="dislikes-num thumbs-num">1</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="comment-list">
+                    <div class="comment-user-profile">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="comment-elm-container">
+                        <div class="comment-elm-head">
+                            <div class="comment-elm-username">오오오</div>
+                            <div class="comment-elm-date">2일전</div>
+                        </div>
+                        <div class="comment-elm-body">
+                            ㅋㅋㅋㅋㅋㅋㅋ 너무 재밌어요 ㅎㅎ
+                        </div>
+                        <div class="comment-elm-foot">
+                            <i data-tooltip-text="좋아요" class="fas fa-thumbs-up comment-thumbs-btn btn-hover"></i>
+                            <div class="likes-num thumbs-num">34</div>
+                            <span data-tooltip-text="싫어요"><i class="fas fa-thumbs-down comment-thumbs-btn btn-hover"></i></span>
+                            <div class="dislikes-num thumbs-num">1</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    `;
+
+    document.querySelector('#sorting-opt-toggle-btn').addEventListener('click', toggleSortingBtns);
     setVideoWidth();
 }
+
+function toggleSortingBtns() {
+    const sortingOptUL = document.querySelector('.sorting-opt');
+
+    sortingOptUL.style.display = sortingOptUL.style.display === 'none' ? 'inline-block' : 'none';
+}
+

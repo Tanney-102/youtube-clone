@@ -137,7 +137,7 @@ function getHeaderEnd() {
         `
     const outdoor = `
         <div class="login-btn-container">
-            <a href="./login" class="login-btn">
+            <a href="./login.html" class="login-btn">
                 <i class="fas fa-user-circle login-btn-icon"></i>
                 로그인
             </a>
@@ -145,21 +145,29 @@ function getHeaderEnd() {
         `
     
     const headerEnd = document.querySelector('#end');
-    const url = origin_server;
-    // const config = {
-    //     method : 'get',
-    //     headers : {
-    //         'Authorization' : localStorage.getItem('token'),
-    //     },
-    // }
+    const url = origin_server + 'accounts/user/';
+    const token = 'Token ' + localStorage.getItem('token');
+    const config = {
+        method : 'get',
+        headers : {
+            'Authorization' : token,
+        },
+    }
+    console.log(token);
+    if(localStorage.getItem('token') === null) {
+        headerEnd.innerHTML = outdoor;
+        return;
+    }
 
-    // fetch(url, config)
-    // .then( res => {
-    //     if(res == 200) {
-    //         headerEnd.innerHTML = indoor;
-    //     } else {
-    //         headerEnd.innerHTML = outdoor;
-    //     }
-    // })
-    headerEnd.innerHTML = outdoor;
+    fetch(url, config)
+    .then( res => { return res.json() } )
+    .then( data => {
+        console.log(data);
+        if(data.id) {
+            headerEnd.innerHTML = indoor;
+        } else {
+            headerEnd.innerHTML = outdoor;
+        }
+    })
+    .catch( err => console.error(err) );
 }

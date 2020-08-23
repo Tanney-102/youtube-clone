@@ -1,18 +1,17 @@
 const submitBtn = document.querySelector('#login-btn');
+const loginField = document.querySelector('.login-field');
 let loginBtn_flag = false; // 비활성화: false, 활성화: true
 
 submitBtn.addEventListener('click', submitLoginInfo);
-$('form').on('propertychange change keyup paste', toggleLoginBtn);
-
-
+loginField.addEventListener('keyup', toggleLoginBtn);
 
 //
 // functions
 // 
 function submitLoginInfo() {
     const loginInfo = getLoginInfo();
-    const url = "";
-    const home_url = origin_home;
+    const url = origin_server + 'accounts/login/';
+    const url_home = './index.html';
     const config = {
         method : 'post',
         headers : {
@@ -22,24 +21,27 @@ function submitLoginInfo() {
     }
 
     fetch(url, config)
-    .then( res => {
-        if(res.token) {
-            localStorage.setItem('wtw-token', res.token);
-            fetch(home_url, {method: 'get'});
+    .then( res => { return res.json() } )
+    .then( data => {
+        if(data.token) {
+            localStorage.setItem('token', data.token);
+            console.log(localStorage.getItem('token'));
+            location.replace(url_home);
         } else {
-            alert('로그인 실패')
+            alert('회원정보를 확인해주세요.')
         }
     })
+    .catch( err => console.error(err) );
 }
 
 function getLoginInfo() {
     const info = {
-        id : "",
-        pw : "",
+        username : "",
+        password : "",
     };
 
-    info.id = document.querySelector('#userID').value;
-    info.pw = document.querySelector('#userPW').value;
+    info.username = document.querySelector('#userID').value;
+    info.password = document.querySelector('#userPW').value;
 
     return info;
 }

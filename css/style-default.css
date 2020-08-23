@@ -33,3 +33,25 @@ input::placeholder {
 .btn-hover:hover {
     cursor:pointer;
 }
+
+[data-tooltip-text]:hover {
+    position:relative;
+}
+
+[data-tooltip-text]:hover::after {
+    content:attr(data-tooltip-text);
+
+    position: absolute;
+    right:0;
+    bottom:-170%;
+    
+    background-color:rgba(0, 0, 0, 0.5);
+    color:#d0d0d0;
+    font-size:12px;
+
+    display:inline-block;
+    white-space:nowrap;;
+    line-height:2;
+    padding:0 8px;
+    z-index:1;
+}
