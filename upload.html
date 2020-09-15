@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Upload</title>
+    <link rel="stylesheet" href="./css/style-default.css">
+    <link rel="stylesheet" href="./css/style-header.css">
+    <link rel="stylesheet" href="./css/style-upload.css">
+</head>
+<body>
+    <header>
+        <div id="head-container" class="head-container">
+            <div id="begin" class="head-container-contents">
+                <div id="head-main-logo">
+                    <h1>
+                        <a href="/"><img src="./image/yt-main-logo.png" alt="유튜브" width="120px" class="btn-hover"></a>
+                    </h1>
+                </div>
+            </div>
+            <div id="end" class="head-container-contents"></div>
+        </div>
+    </header>
+    <main>
+        <div class="upload-form">
+            <div class="video-info-area">
+                <input type="text" id="v-info-title">
+                <textarea id="v-info-text"></textarea>
+                <select id="category-select">
+                    <option value="sport">sport</option>
+                    <option value="entertainment">entertainment</option>
+                    <option value="etc">etc</option>
+                </select>
+                <input type="file" id="thumbnail-input">
+                <img src="#" width="100px" id="thumbnail-img">
+            </div>
+            <div class="video-area">
+                <input type="file" id="video-input">    
+            </div>
+            <button id="upload" class="btn-hover">upload</button>
+        </div>
+    </main>
+    <script src="./script/origin.js"></script>
+    <script src="./script/MainView.js"></script>
+    <script src="./script/Upload.js"></script>
+</body>
+</html>

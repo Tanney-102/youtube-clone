@@ -130,7 +130,7 @@ function getSmallHeader() {
 
 function getHeaderEnd() {
     const indoor = `
-        <span data-tooltip-text="만들기"><i id="new-video-btn" class="fas fa-video btn-hover header-btns"></i></span>
+        <a href="./upload.html"><span data-tooltip-text="만들기"><i id="new-video-btn" class="fas fa-video btn-hover header-btns"></i></span></a>
         <span data-tooltip-text="YouTube 앱"><i id="apps-btn" class="fas fa-boxes btn-hover header-btns"></i></span>
         <span data-tooltip-text="알림"><i id="notice-btn" class="fas fa-bell btn-hover header-btns"></i></span>
         <span data-tooltip-text="내 계정"><i id="user-home-btn" class="fas fa-user-circle btn-hover header-btns"></i></span>

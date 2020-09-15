@@ -5,8 +5,8 @@ getVideos();
 // functions
 //
 function getVideos() {
-    const url = origin_server + 'videos/';
-    // const url = '../local-server/data/video-data.json';
+    // const url = origin_server + 'videos/';
+    const url = '../local-server/data/video-data.json';
     const config = {
         method: 'get',
     };

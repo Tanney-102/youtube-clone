@@ -24,7 +24,7 @@ pickMode(0); // 0: 레이아웃 모드 , 1: 서버모드
 function pickMode(mode) {
     if(mode==1) {
         loadMainVideo();
-        loadCommentsByLikes();
+        // loadCommentsByLikes();
     } else {
         loadLayoutMode();
     }
@@ -44,15 +44,15 @@ function loadMainVideo() {
     .catch( err => console.error(err) );
 }
 
-function loadCommentsByLikes(comments) {
-    const config = {
-        method:'get',
-    };
+// function loadCommentsByLikes(comments) {
+//     const config = {
+//         method:'get',
+//     };
 
-    fetch(url_getVideo, config)
-    .then( res => { return res.json['comments'] } )
-    .then( data => render
-}
+//     fetch(url_getVideo, config)
+//     .then( res => { return res.json['comments'] } )
+//     .then( data => render
+// }
 
 function loadCommentsBydate(comments) {
 

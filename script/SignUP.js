@@ -95,33 +95,28 @@ function checkUserName() {
         return;
     }
 
-    const data = { 'username' : name };
-    const url_check = origin_server + 'accounts/register/id_check/';
+    const url_check = origin_server + 'accounts/register/id_check/?username=' + name;
     const config_check = {
         method: 'get',
-        body: JSON.stringify(data),
     }
 
-    // fetch(url_check, config_check)
-    // .then(res => { return res.json() })
-    // .then(result => {
-    //     if(result.data === 'exist') {
-    //         this.check = true;
-    //         alert('사용가능한 이름입니다.');
-    //     } else {
-    //         alert('이미 사용중인 이름입니다.');
-    //     }
-    // })
-    // .catch( err => console.error(err) );
-
-    if(confirm('사용가능한 이름입니다. 사용하시겠습니까?')) {
-        idCheck = true;
-        nameInput.setAttribute('readonly', 'readonly');
-        nameInput.parentNode.style.backgroundColor = '#e8e8e8';
-        nameInput.style.backgroundColor = '#e8e8e8';
-        // nameInput.parentNode.children[1].innerHTML = '수정';
-        // nameInput.parentNode.children[1].addEventListener('click', reloadInput);
-    } 
+    fetch(url_check, config_check)
+    .then(res => { return res.json() })
+    .then(result => {
+        if(result.data === 'exist') {
+            alert('이미 사용중인 이름입니다.');
+        } else {
+            if(confirm('사용가능한 이름입니다. 사용하시겠습니까?')) {
+                idCheck = true;
+                nameInput.setAttribute('readonly', 'readonly');
+                nameInput.parentNode.style.backgroundColor = '#e8e8e8';
+                nameInput.style.backgroundColor = '#e8e8e8';
+                // nameInput.parentNode.children[1].innerHTML = '수정';
+                // nameInput.parentNode.children[1].addEventListener('click', reloadInput);
+            } 
+        }
+    })
+    .catch( err => console.error(err) );
 }
 
 function reloadInput() {
